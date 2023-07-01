@@ -61,7 +61,7 @@ jobs:
           poetry install
 
       - name: Run tests and collect coverage
-        run: pytest --cov vrchat_io # NEEDS TO BE UPDATED WHEN CHANGING THE NAME OF "src" FOLDER
+        run: poetry run pytest --cov vrchat_io # NEEDS TO BE UPDATED WHEN CHANGING THE NAME OF "src" FOLDER
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
