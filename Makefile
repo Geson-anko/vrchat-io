@@ -10,5 +10,5 @@ sync: ## Merge changes from main branch to your current branch
 test: ## Run not slow tests
 	poetry run pytest -v
 
-test-full: ## Run all tests
-	poetry run pytest -v --slow
+test-full: ## Run all tests and coverage.
+	poetry run pytest -v --slow --cov=vrchat_io
