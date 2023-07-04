@@ -40,7 +40,6 @@ class InputController:
             value (Any): Sending value(s).
             reset_value (Any): Reset value(s).
             duration (float): Duration of sending value.
-            background (bool): If True, send command in background.
         """
         self.command(address, value)
         time.sleep(duration)
