@@ -2,7 +2,7 @@
 
 **Work in progress.**
 
-VRChat IO is a library for input and output of VRChat data.
+VRChat IO is a library for input and output of VRChat data. (For AI, Machine Learnings.)
 
 ## Installation
 
@@ -50,6 +50,66 @@ VRChatの映像をキャプチャし、Pythonから取得するためにOBSの�
 3. VRChatのウィンドウをキャプチャする。
 
 ## Features
+
+### Video Capture
+
+- OpenCVVideoCapture
+  `cv2.VideoCapture`の簡易ラッパーです。解像度、フレームレート、BGR2RGBの変換など、基本的な事を実装します。
+
+```py
+from vrchat_io.vision import OpenCVVideoCapture
+import cv2
+
+cam = OpenCVVideoCapture(
+   camera = cv2.VideoCapture(2), # Device index depends on your pc.
+   width = 1920,
+   height = 1080,
+   fps = 30,
+)
+
+frame = cam.read(bgr2rgb=True) # Convert to rgb image.
+```
+
+### Input Controller
+
+`python-osc`の`SimpleUDPClient`のラッパークラスです。
+
+```py
+from vrchat_io.osc import InputController, Axes, Buttons
+from pythonosc.udp_client import SimpleUDPClient
+import time
+
+ctrlr = InputController(
+   SimpleUDPClient("localhost", 9000)
+)
+
+ctrlr.command(Axes.Vertical, 0.5)
+time.sleep(1.0)
+ctrlr.command(Axes.Vertical, 0.0)
+```
+
+通常OSCで命令を送信した後は、必ずリセットの命令を出す必要があります。指定した時間の後にそうするためには`command_and_reset`メソッドを用います。
+
+```py
+from vrchat_io.osc import InputController, Axes, Buttons
+from pythonosc.udp_client import SimpleUDPClient
+
+ctrlr = InputController(
+   SimpleUDPClient("localhost", 9000)
+)
+
+# It moves forward for one second and then stops.
+
+ctrlr.command_and_reset(
+   Buttons.MoveForward, # command address
+   1, # Input value
+   0, # Reset value
+   duration = 1.0, # The reset value(s) is sent after duration [seconds]
+   background = False, # Throw reset process to background task.
+)
+```
+
+### Future Features
 
 (Implement below things in the future.)
 
