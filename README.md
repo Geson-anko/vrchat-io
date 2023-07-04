@@ -38,7 +38,7 @@ VRChatの映像をキャプチャし、Pythonから取得するためにOBSの�
    - Windows:
 
      1. obs-virtualcamをインストール: <https://github.com/Avasam/obs-virtual-cam/releases>
-     2. `ツール -> Virtual Cam`から仮想カメラを開始。
+     2. `ツール -> VirtualCam`から仮想カメラを開始。
 
    - Linux (仮想カメラが無い場合):
 
