@@ -2,7 +2,9 @@
 
 **Work in progress.**
 
-VRChat IO is a library for sending and getting VRChat data. (For AI, Machine Learnings.)
+VRChat IO is a library for inputting data into and getting data from VRChat. (For AI, Machine Learnings.)
+
+VRChat IOは、VRChatにデータを入力したり、VRChatから取得したりするためのライブラリです。
 
 ## Installation
 
