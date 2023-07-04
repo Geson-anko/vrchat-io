@@ -16,6 +16,7 @@ pytest = "^7.4.0"
 pre-commit = "^3.3.3"
 pytest-slow = "^0.0.3"
 pytest-cov = {extras = ["toml"], version = "^4.1.0"}
+pytest-mock = "^3.11.1"
 
 [build-system]
 requires = ["poetry-core"]
