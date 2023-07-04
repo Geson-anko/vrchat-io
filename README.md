@@ -10,6 +10,8 @@ VRChat IO is a library for input and output of VRChat data.
 pip install "git+https://github.com/Geson-anko/vrchat-io.git@main"
 ```
 
+Note: Linux is future support.
+
 ### VRChat
 
 1. Steamからインストール
