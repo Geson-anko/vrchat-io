@@ -2,7 +2,9 @@
 
 **Work in progress.**
 
-VRChat IO is a library for input and output of VRChat data. (For AI, Machine Learnings.)
+VRChat IO is a library for inputting data into and getting data from VRChat. (For AI, Machine Learnings.)
+
+VRChat IOは、VRChatにデータを入力したり、VRChatから取得したりするためのライブラリです。
 
 ## Installation
 
@@ -80,7 +82,7 @@ from pythonosc.udp_client import SimpleUDPClient
 import time
 
 ctrlr = InputController(
-   SimpleUDPClient("localhost", 9000)
+   SimpleUDPClient("127.0.0.1", 9000)
 )
 
 ctrlr.command(Axes.Vertical, 0.5)
@@ -88,7 +90,7 @@ time.sleep(1.0)
 ctrlr.command(Axes.Vertical, 0.0)
 ```
 
-通常OSCで命令を送信した後は、必ずリセットの命令を出す必要があります。指定した時間の後にそうするためには`command_and_reset`メソッドを用います。
+通常OSCで命令を送信した後は、必ずリセットの命令を出す必要があります。指定した時間の後にそうするためには`command_and_reset`メソッドを用います。Backgroundスレッドで実行する場合は`command_and_reset_background`を用います。
 
 ```py
 from vrchat_io.osc import InputController, Axes, Buttons
@@ -105,7 +107,6 @@ ctrlr.command_and_reset(
    1, # Input value
    0, # Reset value
    duration = 1.0, # The reset value(s) is sent after duration [seconds]
-   background = False, # Throw reset process to background task.
 )
 ```
 
@@ -115,6 +116,6 @@ ctrlr.command_and_reset(
 
 - [ ] Video Capture: 統一されたAPIを定義し、VRChatのプレイ映像をキャプチャします。内部ライブラリの処理を隠ぺいします。
 - [ ] Audio Capture: 統一されたAPIを定義し、VRChatの音声をキャプチャします。
-- [ ] OSC Input
+- [x] OSC Input
 - [ ] OSC Output
 - [ ] etc...
