@@ -58,6 +58,8 @@ VRChatの映像をキャプチャし、Pythonから取得するためにOBSの�
 - OpenCVVideoCapture
   `cv2.VideoCapture`の簡易ラッパーです。解像度、フレームレート、BGR2RGBの変換など、基本的な事を実装します。
 
+[DEMOファイルはこちらです。](/demos/opencv_video_capture_demo.py)
+
 ```py
 from vrchat_io.vision import OpenCVVideoCapture
 import cv2
@@ -67,9 +69,10 @@ cam = OpenCVVideoCapture(
    width = 1920,
    height = 1080,
    fps = 30,
+   bgr2rgb=True # Convert to rgb image.
 )
 
-frame = cam.read(bgr2rgb=True) # Convert to rgb image.
+frame = cam.read()
 ```
 
 ### Input Controller
