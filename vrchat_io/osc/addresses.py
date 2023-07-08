@@ -1,6 +1,7 @@
 """This file contains OSC addresses for the VRChat.
 
-See official docs: https://docs.vrchat.com/docs/osc-overview OSC as Input Controller:
+See official docs: https://docs.vrchat.com/docs/osc-overview OSC as Input
+Controller:
 """
 
 # OSC addresses for input controller.

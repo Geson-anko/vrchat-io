@@ -8,8 +8,9 @@ import numpy as np
 class VideoCapture(ABC):
     """Abstract Video Capture Class.
 
-    This class is the abstract class for capturing video. If you want to add a new video capture method, you should
-    inherit this class and implement the :meth:`read` method.
+    This class is the abstract class for capturing video. If you want to add a
+    new video capture method, you should inherit this class and implement the
+    :meth:`read` method.
     """
 
     @abstractmethod
