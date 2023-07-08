@@ -17,7 +17,10 @@ try:
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-        print(f"\rframe shape: {frame.shape}, fps: {1/(perf_counter() - start_time): .3f}", end="")
+        print(
+            f"\rframe shape: {frame.shape}, fps: {1/(perf_counter() - start_time): .3f}",
+            end="",
+        )
 
 except KeyboardInterrupt:
     pass

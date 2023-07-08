@@ -31,9 +31,15 @@ class TestInputController:
         sleep_mocker = mocker.patch("time.sleep")
         controller.command_and_reset(address, value, reset_value, duration)
 
-        assert osc_client.send_message.call_args_list[0].args == (address, value)
+        assert osc_client.send_message.call_args_list[0].args == (
+            address,
+            value,
+        )
         sleep_mocker.assert_called_once_with(duration)
-        assert osc_client.send_message.call_args_list[1].args == (address, reset_value)
+        assert osc_client.send_message.call_args_list[1].args == (
+            address,
+            reset_value,
+        )
 
     # Sanity check of `_command_and_reset_with_error_catch`
     def test__command_and_reset(self, controller: InputController, mocker: MockerFixture):

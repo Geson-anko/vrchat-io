@@ -12,7 +12,8 @@ logger = logging.getLogger(__name__)
 class InputController:
     """OSC as Input Controller.
 
-    All addresses (commands) are listed in `vrchat_io.osc.addresses` module.
+    All addresses (commands) are listed in `vrchat_io.osc.addresses`
+    module.
     """
 
     def __init__(self, client: SimpleUDPClient) -> None:
@@ -53,11 +54,16 @@ class InputController:
             logger.exception(e)
 
     def command_and_reset_background(self, *args, **kwargs) -> threading.Thread:
-        """Background version of `command_and_reset` method. Arguments are same as `command_and_reset` method.
+        """Background version of `command_and_reset` method. Arguments are same
+        as `command_and_reset` method.
 
         Returns:
             threading.Thread: Thread of `command_and_reset` method.
         """
-        task = threading.Thread(target=self._command_and_reset_with_error_catch, args=args, kwargs=kwargs)
+        task = threading.Thread(
+            target=self._command_and_reset_with_error_catch,
+            args=args,
+            kwargs=kwargs,
+        )
         task.start()
         return task
