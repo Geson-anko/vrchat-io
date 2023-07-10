@@ -6,6 +6,7 @@ import cv2
 from vrchat_io.vision import OpenCVVideoCapture
 
 cam = OpenCVVideoCapture(camera=cv2.VideoCapture(0), width=640, height=480, fps=30, bgr2rgb=False)
+print(f"width: {cam.width}, height: {cam.height}, fps: {cam.fps}")
 
 try:
     while True:
@@ -24,5 +25,7 @@ try:
 
 except KeyboardInterrupt:
     pass
+
+print()
 
 cv2.destroyAllWindows()
