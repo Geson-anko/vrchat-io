@@ -25,11 +25,8 @@ class VideoCapture(ABC):
         pass
 
 
-class VideoCaptureWrapper(VideoCapture, ABC):
-    """Wrapper class for video capture.
-
-    This class wraps the return value of :meth:`read` method of the video capture class.
-    Please implement the :meth:`after_read` method to process the frame.
+class VideoCaptureWrapper(VideoCapture):
+    """The Base Wrapper Class for VideoCapture.
 
     You can access base video capture object by ``self._video_capture``.
     """
@@ -42,8 +39,17 @@ class VideoCaptureWrapper(VideoCapture, ABC):
         """
         self._video_capture = video_capture
 
+
+class FrameWrapper(VideoCaptureWrapper):
+    """Wrapper class for video capture.
+
+    This class wraps the return value of :meth:`read` method of the
+    video capture class. Please implement the :meth:`process_frame`
+    method to process the frame.
+    """
+
     @abstractmethod
-    def after_read(self, frame: np.ndarray) -> np.ndarray:
+    def process_frame(self, frame: np.ndarray) -> np.ndarray:
         """Process the frame read from the video capture.
 
         Args:
@@ -60,4 +66,4 @@ class VideoCaptureWrapper(VideoCapture, ABC):
         Returns:
             np.ndarray: The processed frame read from the video capture.
         """
-        return self.after_read(self._video_capture.read())
+        return self.process_frame(self._video_capture.read())
