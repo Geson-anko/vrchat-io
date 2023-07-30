@@ -1,7 +1,7 @@
 """This file contains a tool for sending OSC messages to VRChat.
 
-See official docs: 
-https://docs.vrchat.com/docs/osc-overview 
+See official docs:
+https://docs.vrchat.com/docs/osc-overview
 https://docs.vrchat.com/docs/osc-as-input-controller
 """
 import logging

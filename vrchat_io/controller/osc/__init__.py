@@ -1,1 +1,1 @@
-from .input_controller import InputController, Axes, Buttons
+from .input_controller import Axes, Buttons, InputController
