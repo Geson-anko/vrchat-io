@@ -1,2 +1,1 @@
-from .addresses import Axes, Buttons
-from .input_controller import InputController
+from .input_controller import InputController, Axes, Buttons

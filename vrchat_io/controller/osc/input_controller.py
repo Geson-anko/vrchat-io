@@ -1,4 +1,9 @@
-"""This file contains a tool for sending OSC messages to VRChat."""
+"""This file contains a tool for sending OSC messages to VRChat.
+
+See official docs: 
+https://docs.vrchat.com/docs/osc-overview 
+https://docs.vrchat.com/docs/osc-as-input-controller
+"""
 import logging
 import threading
 import time
@@ -14,8 +19,7 @@ logger = logging.getLogger(__name__)
 class InputController(Controller):
     """OSC as Input Controller.
 
-    All addresses (commands) are listed in `vrchat_io.osc.addresses`
-    module.
+    All addresses (commands) are listed below.
     """
 
     def __init__(self, client: SimpleUDPClient) -> None:
@@ -30,7 +34,7 @@ class InputController(Controller):
         """Send command to VRChat.
 
         Args:
-            address (str): Address of command. See `vrchat_io.osc.addresses` module.
+            address (str): Address of command.
             value (Any): Sending value(s).
         """
         self.client.send_message(address, value)
@@ -69,3 +73,38 @@ class InputController(Controller):
         )
         task.start()
         return task
+
+
+class Axes:
+    Vertical = "/input/Vertical"
+    Horizontal = "/input/Horizontal"
+    LookHorizontal = "/input/LookHorizontal"
+    UseAxisRight = "/input/UseAxisRight"
+    GrabAxisRight = "/input/GrabAxisRight"
+    MoveHoldFB = "/input/MoveHoldFB"
+    SpinHoldCwCcw = "/input/SpinHoldCwCcw"
+    SpinHoldUD = "/input/SpinHoldUD"
+    SpinHoldLR = "/input/SpinHoldLR"
+
+
+class Buttons:
+    MoveForward = "/input/MoveForward"
+    MoveBackward = "/input/MoveBackward"
+    MoveLeft = "/input/MoveLeft"
+    MoveRight = "/input/MoveRight"
+    LookLeft = "/input/LookLeft"
+    LookRight = "/input/LookRight"
+    Jump = "/input/Jump"
+    Run = "/input/Run"
+    ComfortLeft = "/input/ComfortLeft"
+    ComfortRight = "/input/ComfortRight"
+    DropRight = "/input/DropRight"
+    UseRight = "/input/UseRight"
+    GrabRight = "/input/GrabRight"
+    DropLeft = "/input/DropLeft"
+    UseLeft = "/input/UseLeft"
+    GrabLeft = "/input/GrabLeft"
+    PanicButton = "/input/PanicButton"
+    QuickMenuToggleLeft = "/input/QuickMenuToggleLeft"
+    QuickMenuToggleRight = "/input/QuickMenuToggleRight"
+    Voice = "/input/Voice"
