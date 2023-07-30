@@ -3,6 +3,7 @@ import threading
 import pytest
 from pytest_mock import MockerFixture
 
+from vrchat_io.abc.controller import Controller
 from vrchat_io.osc.input_controller import InputController
 
 
@@ -10,6 +11,9 @@ class TestInputController:
     @pytest.fixture
     def controller(self, osc_client):
         return InputController(osc_client)
+
+    def test_inheritance(self):
+        assert issubclass(InputController, Controller)
 
     def test_init(self, osc_client, controller: InputController):
         assert controller.client == osc_client

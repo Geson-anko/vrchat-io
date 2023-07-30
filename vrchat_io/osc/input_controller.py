@@ -6,10 +6,12 @@ from typing import Any
 
 from pythonosc.udp_client import SimpleUDPClient
 
+from ..abc.controller import Controller
+
 logger = logging.getLogger(__name__)
 
 
-class InputController:
+class InputController(Controller):
     """OSC as Input Controller.
 
     All addresses (commands) are listed in `vrchat_io.osc.addresses`
