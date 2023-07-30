@@ -1,5 +1,5 @@
-from vrchat_io.osc import addresses
-from vrchat_io.osc.addresses import Axes, Buttons
+from vrchat_io.controller.osc import addresses
+from vrchat_io.controller.osc.addresses import Axes, Buttons
 
 
 def test_Axes():

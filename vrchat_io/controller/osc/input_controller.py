@@ -6,7 +6,7 @@ from typing import Any
 
 from pythonosc.udp_client import SimpleUDPClient
 
-from ..abc.controller import Controller
+from ...abc.controller import Controller
 
 logger = logging.getLogger(__name__)
 

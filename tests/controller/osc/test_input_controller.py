@@ -4,7 +4,7 @@ import pytest
 from pytest_mock import MockerFixture
 
 from vrchat_io.abc.controller import Controller
-from vrchat_io.osc.input_controller import InputController
+from vrchat_io.controller.osc.input_controller import InputController
 
 
 class TestInputController:
