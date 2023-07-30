@@ -15,3 +15,18 @@ class Controller(ABC):
     def command(self, *args: Any, **kwds: Any) -> None:
         """Send a command to the VRChat."""
         pass
+
+
+class ControllerWrapper(Controller):
+    """The Base Wrapper Class for Controller.
+
+    You can access base controller object by ``self._controller``.
+    """
+
+    def __init__(self, controller: Controller, *args: Any, **kwds: Any) -> None:
+        """Initialize the controller wrapper.
+
+        Args:
+            controller (Controller): The controller to be wrapped.
+        """
+        self._controller = controller
