@@ -1,1 +1,1 @@
-from .input_controller import Axes, Buttons, InputController
+from .input_controller import RESET_VALUES, Axes, Buttons, InputController
