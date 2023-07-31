@@ -2,7 +2,7 @@ import pytest
 from pytest_mock import MockerFixture
 
 from vrchat_io.controller.wrappers.osc.axes_locomotion_wrapper import (
-    RESET_VALUES,
+    AXES_LOCOMOTION_RESET_VALUES,
     Axes,
     AxesLocomotionWrapper,
 )
@@ -10,7 +10,7 @@ from vrchat_io.controller.wrappers.osc.multi_input_wrapper import MultiInputWrap
 
 
 def test_RESET_VALUES():
-    assert RESET_VALUES == [0.0, 0.0, 0.0]
+    assert AXES_LOCOMOTION_RESET_VALUES == [0.0, 0.0, 0.0]
 
 
 class TestAxesLocomotionWrapper:

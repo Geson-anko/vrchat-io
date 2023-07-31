@@ -6,7 +6,7 @@ from ....abc.controller import ControllerWrapper
 from ...osc.input_controller import Axes
 from .multi_input_wrapper import MultiInputWrapper
 
-RESET_VALUES = [0.0, 0.0, 0.0]  # vertical, horizontal, look_horizontal
+AXES_LOCOMOTION_RESET_VALUES = [0.0, 0.0, 0.0]  # vertical, horizontal, look_horizontal
 
 
 class AxesLocomotionWrapper(MultiInputWrapper):
@@ -34,6 +34,8 @@ class AxesLocomotionWrapper(MultiInputWrapper):
     ) -> None:
         """Send locomotion commands of Axes to VRChat. Default arguments are
         `None`, so sending only the items to be manipulated.
+
+        NOTE: If you want to reset, use `command(*AXES_LOCOMOTION_RESET_VALUES)`.
 
         Args:
             vertical (Optional[float]): move forward or backward.
