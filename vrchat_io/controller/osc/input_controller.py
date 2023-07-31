@@ -108,3 +108,36 @@ class Buttons:
     QuickMenuToggleLeft = "/input/QuickMenuToggleLeft"
     QuickMenuToggleRight = "/input/QuickMenuToggleRight"
     Voice = "/input/Voice"
+
+
+RESET_VALUES = {
+    Axes.Vertical: 0.0,
+    Axes.Horizontal: 0.0,
+    Axes.LookHorizontal: 0.0,
+    Axes.UseAxisRight: 0.0,
+    Axes.GrabAxisRight: 0.0,
+    Axes.MoveHoldFB: 0.0,
+    Axes.SpinHoldCwCcw: 0.0,
+    Axes.SpinHoldUD: 0.0,
+    Axes.SpinHoldLR: 0.0,
+    Buttons.MoveForward: 0,
+    Buttons.MoveBackward: 0,
+    Buttons.MoveLeft: 0,
+    Buttons.MoveRight: 0,
+    Buttons.LookLeft: 0,
+    Buttons.LookRight: 0,
+    Buttons.Jump: 0,
+    Buttons.Run: 0,
+    Buttons.ComfortLeft: 0,
+    Buttons.ComfortRight: 0,
+    Buttons.DropRight: 0,
+    Buttons.UseRight: 0,
+    Buttons.GrabRight: 0,
+    Buttons.DropLeft: 0,
+    Buttons.UseLeft: 0,
+    Buttons.GrabLeft: 0,
+    Buttons.PanicButton: 0,
+    Buttons.QuickMenuToggleLeft: 0,
+    Buttons.QuickMenuToggleRight: 0,
+    Buttons.Voice: 0,
+}

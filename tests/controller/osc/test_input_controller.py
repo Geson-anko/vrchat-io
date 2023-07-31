@@ -5,6 +5,7 @@ from pytest_mock import MockerFixture
 
 from vrchat_io.abc.controller import Controller
 from vrchat_io.controller.osc.input_controller import (
+    RESET_VALUES,
     Axes,
     Buttons,
     InputController,
@@ -114,3 +115,35 @@ def test_Buttons():
     assert Buttons.QuickMenuToggleLeft == "/input/QuickMenuToggleLeft"
     assert Buttons.QuickMenuToggleRight == "/input/QuickMenuToggleRight"
     assert Buttons.Voice == "/input/Voice"
+
+
+def test_RESET_VALUES():
+    assert RESET_VALUES[Axes.Vertical] == 0.0
+    assert RESET_VALUES[Axes.Horizontal] == 0.0
+    assert RESET_VALUES[Axes.LookHorizontal] == 0.0
+    assert RESET_VALUES[Axes.UseAxisRight] == 0.0
+    assert RESET_VALUES[Axes.GrabAxisRight] == 0.0
+    assert RESET_VALUES[Axes.MoveHoldFB] == 0.0
+    assert RESET_VALUES[Axes.SpinHoldCwCcw] == 0.0
+    assert RESET_VALUES[Axes.SpinHoldUD] == 0.0
+    assert RESET_VALUES[Axes.SpinHoldLR] == 0.0
+    assert RESET_VALUES[Buttons.MoveForward] == 0
+    assert RESET_VALUES[Buttons.MoveBackward] == 0
+    assert RESET_VALUES[Buttons.MoveLeft] == 0
+    assert RESET_VALUES[Buttons.MoveRight] == 0
+    assert RESET_VALUES[Buttons.LookLeft] == 0
+    assert RESET_VALUES[Buttons.LookRight] == 0
+    assert RESET_VALUES[Buttons.Jump] == 0
+    assert RESET_VALUES[Buttons.Run] == 0
+    assert RESET_VALUES[Buttons.ComfortLeft] == 0
+    assert RESET_VALUES[Buttons.ComfortRight] == 0
+    assert RESET_VALUES[Buttons.DropRight] == 0
+    assert RESET_VALUES[Buttons.UseRight] == 0
+    assert RESET_VALUES[Buttons.GrabRight] == 0
+    assert RESET_VALUES[Buttons.DropLeft] == 0
+    assert RESET_VALUES[Buttons.UseLeft] == 0
+    assert RESET_VALUES[Buttons.GrabLeft] == 0
+    assert RESET_VALUES[Buttons.PanicButton] == 0
+    assert RESET_VALUES[Buttons.QuickMenuToggleLeft] == 0
+    assert RESET_VALUES[Buttons.QuickMenuToggleRight] == 0
+    assert RESET_VALUES[Buttons.Voice] == 0
