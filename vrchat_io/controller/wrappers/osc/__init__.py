@@ -1,1 +1,2 @@
+from .axes_locomotion_wrapper import AXES_LOCOMOTION_RESET_VALUES, AxesLocomotionWrapper
 from .multi_input_wrapper import MultiInputWrapper
