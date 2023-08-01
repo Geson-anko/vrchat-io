@@ -19,6 +19,10 @@ pytest-slow = "^0.0.3"
 pytest-cov = {extras = ["toml"], version = "^4.1.0"}
 pytest-mock = "^3.11.1"
 
+
+[tool.poetry.group.demo.dependencies]
+keyboard = "^0.13.5"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
