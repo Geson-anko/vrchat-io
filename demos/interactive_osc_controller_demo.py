@@ -13,13 +13,13 @@ NOTE: Linux User
     PYTHON_PATH=$(which python3) && sudo $PYTHON_PATH interactive_osc_controller_demo.py
     ```
 """
-### Settings ###
+# -- Settings ---
 
 vertical_speed = 1.0
 horizontal_speed = 1.0
 look_horizontal_speed = 1.0
 
-################
+# ---------------
 
 
 import time
