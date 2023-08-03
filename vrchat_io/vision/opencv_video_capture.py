@@ -62,11 +62,11 @@ class OpenCVVideoCapture(AbstractVideoCapture):
 
     def configure_camera(self) -> None:
         """Configures the camera settings with the desired properties."""
-        if not self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, self.expected_width):
+        if not self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, self.expected_width) or self.width != self.expected_width:
             logger.warning(f"Failed to set width to {self.expected_width}.")
-        if not self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, self.expected_height):
+        if not self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, self.expected_height) or self.height != self.expected_height:
             logger.warning(f"Failed to set height to {self.expected_height}.")
-        if not self.camera.set(cv2.CAP_PROP_FPS, self.expected_fps):
+        if not self.camera.set(cv2.CAP_PROP_FPS, self.expected_fps) or self.fps != self.expected_fps:
             logger.warning(f"Failed to set fps to {self.expected_fps}.")
 
     @property

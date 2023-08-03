@@ -30,7 +30,18 @@ class TestOpenCVVideoCapture:
 
     @pytest.mark.parametrize("width, height, fps", [(640, 480, 30), (1280, 720, 60)])
     def test_properties(self, mock_camera, width, height, fps):
-        mock_camera.get.side_effect = [width, height, fps]
+        def mock_get(*args, **kwds):
+            match args[0]:
+                case cv2.CAP_PROP_FRAME_WIDTH:
+                    return width
+                case cv2.CAP_PROP_FRAME_HEIGHT:
+                    return height
+                case cv2.CAP_PROP_FPS:
+                    return fps
+                case _:
+                    raise ValueError(f"Unexpected property: {args[0]}")
+
+        mock_camera.get.side_effect = mock_get
         cam = OpenCVVideoCapture(mock_camera, width, height, fps)
         assert cam.width == width
         assert cam.height == height
