@@ -13,7 +13,7 @@ import time
 
 from pythonosc.udp_client import SimpleUDPClient
 
-from vrchat_io.osc import Axes, Buttons, InputController
+from vrchat_io.controller.osc import Axes, Buttons, InputController
 
 # Connect to VRChat.
 controller = InputController(
