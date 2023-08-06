@@ -79,43 +79,15 @@ frame = cam.read()
 
 [DEMOファイルはこちらです。](/demos/opencv_video_capture_demo.py)
 
-### Input Controller
+### Controller
 
-`python-osc`の`SimpleUDPClient`のラッパークラスです。
+- OSC Input Controller
 
-```py
-from vrchat_io.osc import InputController, Axes, Buttons
-from pythonosc.udp_client import SimpleUDPClient
-import time
+  `python-osc`の`SimpleUDPClient`のラッパークラスです。OSCで送信し操作できる項目に関しては[`vrchat-io.controller.osc`の`Axes`や`Buttons`の属性として列挙されているのでそれを用いてください。](/vrchat_io/controller/osc/input_controller.py)
 
-ctrlr = InputController(
-   SimpleUDPClient("127.0.0.1", 9000)
-)
+  [InputControllerに関するDemoファイルはこちらです。](/demos/osc_input_controller_demo.py)
 
-ctrlr.command(Axes.Vertical, 0.5)
-time.sleep(1.0)
-ctrlr.command(Axes.Vertical, 0.0)
-```
-
-通常OSCで命令を送信した後は、必ずリセットの命令を出す必要があります。指定した時間の後にそうするためには`command_and_reset`メソッドを用います。Backgroundスレッドで実行する場合は`command_and_reset_background`を用います。
-
-```py
-from vrchat_io.osc import InputController, Axes, Buttons
-from pythonosc.udp_client import SimpleUDPClient
-
-ctrlr = InputController(
-   SimpleUDPClient("localhost", 9000)
-)
-
-# It moves forward for one second and then stops.
-
-ctrlr.command_and_reset(
-   Buttons.MoveForward, # command address
-   1, # Input value
-   0, # Reset value
-   duration = 1.0, # The reset value(s) is sent after duration [seconds]
-)
-```
+  このInputControllerにも`Wrapper`クラスが用意されており、インターフェイスをラップすることで目的に応じて使いやすくすることができます。[DEMOファイルはこちらです。](/demos/interactive_osc_controller_demo.py)
 
 ### Future Features
 
