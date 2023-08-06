@@ -1,18 +1,28 @@
 # VRChat IO
 
-**Work in progress.**
-
 VRChat IO is a library for inputting data into and getting data from VRChat. (For AI, Machine Learnings.)
 
 VRChat IOは、VRChatにデータを入力したり、VRChatから取得したりするためのライブラリです。
 
 ## Installation
 
+### Supported Platforms
+
+- Windows 10, 11
+- Linux (Ubuntu, Debian, Arch Linux, etc...)
+
+### Command
+
 ```bash
 pip install "git+https://github.com/Geson-anko/vrchat-io.git@main"
 ```
 
-Note: Linux is future support.
+or clone this repository and run following command in the directory.  (Installing from source.)
+
+```bash
+# ./vrchat-io
+pip install -e .
+```
 
 ### VRChat
 
