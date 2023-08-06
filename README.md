@@ -1,18 +1,28 @@
 # VRChat IO
 
-**Work in progress.**
-
 VRChat IO is a library for inputting data into and getting data from VRChat. (For AI, Machine Learnings.)
 
 VRChat IOは、VRChatにデータを入力したり、VRChatから取得したりするためのライブラリです。
 
 ## Installation
 
+### Supported Platforms
+
+- Windows 10, 11
+- Linux (Ubuntu, Debian, Arch Linux, etc...)
+
+### Command
+
 ```bash
 pip install "git+https://github.com/Geson-anko/vrchat-io.git@main"
 ```
 
-Note: Linux is future support.
+or clone this repository and run following command in the directory.  (Installing from source.)
+
+```bash
+# ./vrchat-io
+pip install -e .
+```
 
 ### VRChat
 
@@ -55,70 +65,33 @@ VRChatの映像をキャプチャし、Pythonから取得するためにOBSの�
 
 ### Video Capture
 
-- OpenCVVideoCapture
-  `cv2.VideoCapture`の簡易ラッパーです。解像度、フレームレート、BGR2RGBの変換など、基本的な事を実装します。
-
-[DEMOファイルはこちらです。](/demos/opencv_video_capture_demo.py)
-
 ```py
-from vrchat_io.vision import OpenCVVideoCapture
-import cv2
-
-cam = OpenCVVideoCapture(
-   camera = cv2.VideoCapture(2), # Device index depends on your pc.
-   width = 1920,
-   height = 1080,
-   fps = 30,
-   bgr2rgb=True # Convert to rgb image.
-)
-
+cam = VideoCapture(...)
 frame = cam.read()
 ```
 
-### Input Controller
+- OpenCVVideoCapture
 
-`python-osc`の`SimpleUDPClient`のラッパークラスです。
+  `cv2.VideoCapture`の簡易ラッパーです。`read`メソッドを用いて画像を読み出します。
+  取得する画像の`width`, `height`は指定できますが、などはあくまでも期待される値であり、実際に得られる画像とは異なる場合があることに注意してください。
 
-```py
-from vrchat_io.osc import InputController, Axes, Buttons
-from pythonosc.udp_client import SimpleUDPClient
-import time
+画像を任意のアスペクト比、解像度で必ず取得したい場合は`vrchat_io.vrchat_io.vision.wrappers`内部の[RatioCropWrapper](/vrchat_io/vision/wrappers/ratio_crop_wrapper.py)や[ResizeWrapper](/vrchat_io/vision/wrappers/resize_wrapper.py)を用いてください。
 
-ctrlr = InputController(
-   SimpleUDPClient("127.0.0.1", 9000)
-)
+[DEMOファイルはこちらです。](/demos/opencv_video_capture_demo.py)
 
-ctrlr.command(Axes.Vertical, 0.5)
-time.sleep(1.0)
-ctrlr.command(Axes.Vertical, 0.0)
-```
+### Controller
 
-通常OSCで命令を送信した後は、必ずリセットの命令を出す必要があります。指定した時間の後にそうするためには`command_and_reset`メソッドを用います。Backgroundスレッドで実行する場合は`command_and_reset_background`を用います。
+- OSC Input Controller
 
-```py
-from vrchat_io.osc import InputController, Axes, Buttons
-from pythonosc.udp_client import SimpleUDPClient
+  `python-osc`の`SimpleUDPClient`のラッパークラスです。OSCで送信し操作できる項目に関しては[`vrchat-io.controller.osc`の`Axes`や`Buttons`の属性として列挙されているのでそれを用いてください。](/vrchat_io/controller/osc/input_controller.py)
 
-ctrlr = InputController(
-   SimpleUDPClient("localhost", 9000)
-)
+  [InputControllerに関するDemoファイルはこちらです。](/demos/osc_input_controller_demo.py)
 
-# It moves forward for one second and then stops.
-
-ctrlr.command_and_reset(
-   Buttons.MoveForward, # command address
-   1, # Input value
-   0, # Reset value
-   duration = 1.0, # The reset value(s) is sent after duration [seconds]
-)
-```
+  このInputControllerにも`Wrapper`クラスが用意されており、インターフェイスをラップすることで目的に応じて使いやすくすることができます。[DEMOファイルはこちらです。](/demos/interactive_osc_controller_demo.py)
 
 ### Future Features
 
 (Implement below things in the future.)
 
-- [ ] Video Capture: 統一されたAPIを定義し、VRChatのプレイ映像をキャプチャします。内部ライブラリの処理を隠ぺいします。
 - [ ] Audio Capture: 統一されたAPIを定義し、VRChatの音声をキャプチャします。
-- [x] OSC Input
 - [ ] OSC Output
-- [ ] etc...

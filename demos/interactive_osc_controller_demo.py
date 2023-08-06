@@ -8,9 +8,9 @@ How to control:
 NOTE: Linux User
     You need to run this script as root user.
     Because keyboard module requires root user to access keyboard device.
-    So run the following command in this directory.
+    So run the following command in the project root directory.
     ```sh
-    PYTHON_PATH=$(which python3) && sudo $PYTHON_PATH interactive_osc_controller_demo.py
+    PYTHON_PATH=$(which python3) && sudo $PYTHON_PATH ./demos/interactive_osc_controller_demo.py
     ```
 """
 # -- Settings ---
