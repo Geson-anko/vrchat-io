@@ -95,3 +95,7 @@ frame = cam.read()
 
 - [ ] Audio Capture: 統一されたAPIを定義し、VRChatの音声をキャプチャします。
 - [ ] OSC Output
+
+## Contributing
+
+機能追加やバグ修正は大歓迎です！[詳しくはCONTRIBUTING.mdを参照願います](/CONTRIBUTING.md)
