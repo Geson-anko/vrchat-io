@@ -11,7 +11,7 @@ class TestOpenCVVideoCapture:
     def mock_camera(self, mocker: MockerFixture):
         return mocker.MagicMock(spec=cv2.VideoCapture)
 
-    def test_init(self, mock_camera):
+    def test_init(self, mock_camera, mocker: MockerFixture):
         cam = OpenCVVideoCapture(mock_camera)
         assert cam.camera == mock_camera
         assert cam.expected_width == 640
@@ -19,6 +19,10 @@ class TestOpenCVVideoCapture:
         assert cam.expected_fps == 30
         assert cam.bgr2rgb is True
         assert cam.num_trials_on_read_failure == 10
+
+        cv2cam_mock = mocker.patch("cv2.VideoCapture")
+        OpenCVVideoCapture(0)
+        cv2cam_mock.assert_called_once_with(index=0)
 
     def test_configure_camera(self, mock_camera, mocker: MockerFixture):
         cam = OpenCVVideoCapture(mock_camera)
