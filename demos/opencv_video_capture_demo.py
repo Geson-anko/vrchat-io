@@ -6,7 +6,7 @@ import cv2
 from vrchat_io.vision import OpenCVVideoCapture
 from vrchat_io.vision.wrappers import RatioCropWrapper, ResizeWrapper
 
-base_cam = OpenCVVideoCapture(camera=cv2.VideoCapture(0), width=640, height=480, fps=30, bgr2rgb=False)
+base_cam = OpenCVVideoCapture(camera=0, width=640, height=480, fps=30, bgr2rgb=False)
 cam = RatioCropWrapper(base_cam, ratio=1.0 / 1.0, anchor="center")
 cam = ResizeWrapper(cam, size=(512, 512))
 print(f"Base camera width: {base_cam.width}, height: {base_cam.height}, fps: {base_cam.fps}")

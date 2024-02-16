@@ -32,7 +32,7 @@ class OpenCVVideoCapture(AbstractVideoCapture):
 
     def __init__(
         self,
-        camera: cv2.VideoCapture,
+        camera: cv2.VideoCapture | int,
         width: int = 640,
         height: int = 480,
         fps: float = 30,
@@ -42,13 +42,15 @@ class OpenCVVideoCapture(AbstractVideoCapture):
         """Initializes an instance of OpenCVVideoCapture.
 
         Args:
-            camera (cv2.VideoCapture): The OpenCV VideoCapture object to use.
+            camera (cv2.VideoCapture | int): The OpenCV VideoCapture object or camera index to use.
             width (int, optional): The desired width of the video frames.
             height (int, optional): The desired height of the video frames.
             fps (float, optional): The desired frames per second (fps) of the video.
             bgr2rgb (bool, optional): If True, converts video frames from BGR to RGB.
             num_trials_on_read_failure (int, optional): Number of trials on read failure.
         """
+        if isinstance(camera, int):
+            camera = cv2.VideoCapture(index=camera)
 
         self.camera = camera
         self.bgr2rgb = bgr2rgb
