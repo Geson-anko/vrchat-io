@@ -8,7 +8,7 @@ sync: ## Merge changes from main branch to your current branch
 	git pull
 
 test: ## Run not slow tests
-	poetry run pytest -v
+	poetry run pytest ./tests -v
 
 test-full: ## Run all tests and coverage.
-	poetry run pytest -v --slow --cov=vrchat_io
+	poetry run pytest ./tests -v --slow --cov=vrchat_io

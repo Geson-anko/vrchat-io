@@ -1,12 +1,10 @@
 import time
 
-from pythonosc.udp_client import SimpleUDPClient
-
 from vrchat_io.controller.osc.input_controller import RESET_VALUES, InputController
 
 # Connect to VRChat.
 controller = InputController(
-    SimpleUDPClient("127.0.0.1", 9000),
+    ("127.0.0.1", 9000),
 )
 
 for addr, val in RESET_VALUES.items():

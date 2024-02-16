@@ -22,12 +22,14 @@ class InputController(Controller):
     All addresses (commands) are listed below.
     """
 
-    def __init__(self, client: SimpleUDPClient) -> None:
+    def __init__(self, client: SimpleUDPClient | tuple[str, int]) -> None:
         """Initialize InputController with UDPClient. (dependency injection.)
 
         Args:
-            client (SimpleUDPClient): UDPClient of python-osc.
+            client (SimpleUDPClient | tuple[str, int]): UDPClient of python-osc or UDP address to connect.
         """
+        if not isinstance(client, SimpleUDPClient):
+            client = SimpleUDPClient(client[0], client[1])
         self.client = client
 
     def command(self, address: str, value: Any) -> None:
