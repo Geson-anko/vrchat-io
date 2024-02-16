@@ -25,7 +25,6 @@ look_horizontal_speed = 1.0
 import time
 
 import keyboard  # Specified dependency for this demo.
-from pythonosc.udp_client import SimpleUDPClient
 
 from vrchat_io.controller.osc import InputController
 from vrchat_io.controller.wrappers.osc import (
@@ -36,7 +35,7 @@ from vrchat_io.controller.wrappers.osc import (
 
 # Controller setup.
 controller = InputController(
-    SimpleUDPClient("127.0.0.1", 9000),
+    ("127.0.0.1", 9000),
 )
 controller = MultiInputWrapper(controller)
 controller = AxesLocomotionWrapper(controller)

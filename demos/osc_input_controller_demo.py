@@ -11,13 +11,11 @@ Script is,
 
 import time
 
-from pythonosc.udp_client import SimpleUDPClient
-
 from vrchat_io.controller.osc import RESET_VALUES, Axes, Buttons, InputController
 
 # Connect to VRChat.
 controller = InputController(
-    SimpleUDPClient("127.0.0.1", 9000),
+    ("127.0.0.1", 9000),
 )
 
 print("Move forward for 1 second.")
