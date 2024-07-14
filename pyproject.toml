@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vrchat-io"
-version = "0.1.2"
+version = "0.1.3"
 description = "VRChat IO is a library for inputting data into and getting data from VRChat. (For AI, Machine Learnings.)"
 authors = ["GesonAnko <59220704+Geson-anko@users.noreply.github.com>"]
 readme = "README.md"
