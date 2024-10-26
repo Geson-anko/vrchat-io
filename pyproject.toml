@@ -10,6 +10,7 @@ packages = [{include = "vrchat_io"}]
 python = "^3.10"
 python-osc = "^1.8.1"
 opencv-python = "^4.8.0.74"
+sounddevice = "^0.5.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,6 +23,7 @@ pytest-mock = "^3.11.1"
 
 [tool.poetry.group.demo.dependencies]
 keyboard = "^0.13.5"
+soundfile = "^0.12.1"
 
 [build-system]
 requires = ["poetry-core"]
