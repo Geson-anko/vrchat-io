@@ -23,6 +23,7 @@ pytest-mock = "^3.11.1"
 
 [tool.poetry.group.demo.dependencies]
 keyboard = "^0.13.5"
+soundfile = "^0.12.1"
 
 [build-system]
 requires = ["poetry-core"]
