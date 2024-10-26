@@ -22,3 +22,19 @@ class AudioCapture(ABC):
             NDArray[np.float32]: The freame read from audio source.
                 Expected shape is `(frame_count, channels)`.
         """
+
+
+class ApplicationAudioCapture(AudioCapture):
+    """Abstract Application Audio Capture class.
+
+    Capturing the audio from specific application.
+    """
+
+    @abstractmethod
+    def __init__(self, target_application: str) -> None:
+        """Constructs ApplicationAudioCapture.
+
+        Args:
+            target_application (str): Please specify target application name.
+        """
+        super().__init__()
