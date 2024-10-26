@@ -1,4 +1,4 @@
-"""this file contains a wrapper class for sending multiple commands at once."""
+"""This file contains a wrapper class for sending multiple commands at once."""
 
 from typing import Any
 
