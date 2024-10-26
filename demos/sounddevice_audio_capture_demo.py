@@ -11,10 +11,12 @@ devices = sd.query_devices()
 print("--- devices ---")
 print(devices)
 print()
-print("selecting: device", sd.default.device[0])
+print("selecting device:", devices[sd.default.device[0]]["name"])
 print("---------------")
 
-capture = SounddeviceAudioCapture(samplerate=16000, device=sd.default.device[0], frame_size=1600, channels=1)  # 0.1 sec
+capture = SounddeviceAudioCapture(
+    samplerate=16000, device=devices[sd.default.device[0]]["name"], frame_size=1600, channels=1
+)  # 0.1 sec
 
 
 frames = []
