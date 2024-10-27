@@ -38,3 +38,8 @@ class ApplicationAudioCapture(AudioCapture):
             target_application (str): Please specify target application name.
         """
         super().__init__()
+        self._target_application = target_application
+
+    @property
+    def target_application(self) -> str:
+        return self._target_application
