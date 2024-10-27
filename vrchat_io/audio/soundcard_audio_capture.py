@@ -50,6 +50,7 @@ class SoundcardAudioCapture(AudioCapture):
                 or None for default device.
             frame_size (int, optional): Number of frames to read in each capture. Defaults to 1024.
             blocksize (int | None, optional): Size of each audio block for the recorder. Defaults to None.
+                If None, `frame_size` will be used.
             channels (int, optional): Number of audio channels to capture. Defaults to 1 (mono).
 
         Raises:
@@ -63,13 +64,13 @@ class SoundcardAudioCapture(AudioCapture):
         else:
             self._mic = sc.get_microphone(device_id, include_loopback=True)
         self._frame_size = frame_size
-        self._blocksize = blocksize
+        self._blocksize = frame_size if blocksize is None else blocksize
 
         self._samplerate = samplerate
         self._channels = channels
 
         # Open the recording stream
-        self._stream = self._mic.recorder(samplerate=samplerate, channels=channels, blocksize=blocksize)
+        self._stream = self._mic.recorder(samplerate=samplerate, channels=channels, blocksize=self._blocksize)
         self._stream.__enter__()
 
     def read(self) -> npt.NDArray[np.float32]:
