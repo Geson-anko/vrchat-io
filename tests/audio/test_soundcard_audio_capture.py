@@ -1,9 +1,10 @@
-from unittest.mock import MagicMock, Mock
+from unittest.mock import MagicMock, Mock, patch
 
 import numpy as np
 import pytest
 from pytest_mock import MockerFixture
 
+patch("vrchat_io.audio.soundcard_audio_capture.sc")
 from vrchat_io.audio.soundcard_audio_capture import SoundcardAudioCapture
 
 
