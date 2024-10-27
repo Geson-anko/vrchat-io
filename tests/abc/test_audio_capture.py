@@ -35,6 +35,7 @@ class ApplicationAudioCaptureImpl(ApplicationAudioCapture):
 class TestApplicationAudioCapture:
     def test_instantiation(self):
         cap = ApplicationAudioCaptureImpl("some app")
+        assert cap.target_application == "some app"
         cap.read()
 
     def test_error_of_abstract_class_instantiation(self):
