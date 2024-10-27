@@ -14,18 +14,18 @@ class PulseAudioApplicationAudioCapture(ApplicationAudioCapture):
     def __init__(
         self,
         target_application: str,
-        buffer_size: int = 1024,
+        frame_size: int = 1024,
         sample_rate: float = 44100,
         channels: int = 2,
     ) -> None:
         """"""
         assert shutil.which("parecord") is not None, "PulseAudio record command `parecord` is not available"
         super().__init__(target_application)
-        self.buffer_size = buffer_size
+        self.frame_size = frame_size
         self.sample_rate = sample_rate
         self.channels = channels
         self.process: subprocess.Popen | None = None
-        self._buffer: bytes = bytes()
+        self._buffer = bytearray()
 
     def read(self) -> npt.NDArray[np.float32]:
         """"""
@@ -33,12 +33,16 @@ class PulseAudioApplicationAudioCapture(ApplicationAudioCapture):
             self.open()
         while len(self._buffer) < self.bytes_to_read:
             self._buffer += self.process.stdout.read(self.bytes_to_read)
-            time.sleep(self.buffer_size / self.sample_rate * 0.8)
-        return np.frombuffer(self._buffer, dtype=np.float32).reshape(self.buffer_size, self.channels)
+            time.sleep(self.frame_size / self.sample_rate * 0.1)
+        frames = np.frombuffer(self._buffer[: self.bytes_to_read], dtype=np.float32).reshape(
+            self.frame_size, self.channels
+        )
+        self._buffer = self._buffer[self.bytes_to_read :]
+        return frames
 
     @property
     def bytes_to_read(self) -> int:
-        return self.buffer_size * self.channels * 4  # float32 = 4 bytes
+        return self.frame_size * self.channels * 4  # float32 = 4 bytes
 
     def open(self) -> None:
         """"""
@@ -54,7 +58,6 @@ class PulseAudioApplicationAudioCapture(ApplicationAudioCapture):
             # Output to stdout
         ]
         # fmt: on
-        print(cmd)
         self.process = subprocess.Popen(
             args=cmd,
             stdout=subprocess.PIPE,
