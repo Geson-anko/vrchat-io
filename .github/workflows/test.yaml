@@ -22,12 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install system dependencies
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y portaudio19-dev python-all-dev
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
