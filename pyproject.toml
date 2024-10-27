@@ -10,6 +10,7 @@ packages = [{include = "vrchat_io"}]
 python = "^3.10"
 python-osc = "^1.8.1"
 opencv-python = "^4.8.0.74"
+soundcard = "^0.4.3"
 
 
 [tool.poetry.group.dev.dependencies]
