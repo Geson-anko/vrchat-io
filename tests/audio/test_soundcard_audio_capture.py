@@ -1,10 +1,15 @@
-from unittest.mock import MagicMock, Mock, patch
+import shutil
+import sys
+from unittest.mock import MagicMock, Mock
 
 import numpy as np
 import pytest
 from pytest_mock import MockerFixture
 
-patch("vrchat_io.audio.soundcard_audio_capture.sc")
+if sys.platform == "linux":
+    if shutil.which("pipewire") is None and shutil.which("pulseaudio") is None:
+        pytest.skip("Linux audio backend system (pipewire or pulseaudio) is not available.", allow_module_level=True)
+
 from vrchat_io.audio.soundcard_audio_capture import SoundcardAudioCapture
 
 
