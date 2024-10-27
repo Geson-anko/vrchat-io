@@ -16,11 +16,12 @@ for mic in mics:
     print("-------------------------------")
 
 # Use default microphone
-print(f"Using default microphone: {sc.default_microphone().name}")
+DEVICE_NAME = sc.default_microphone().name  # specify your microphone.
+print(f"Using default microphone: {DEVICE_NAME}")
 print()
 
 # Initialize audio capture
-capture = SoundcardAudioCapture(samplerate=44100, frame_size=4410, channels=1)  # 0.1 sec
+capture = SoundcardAudioCapture(device_id=DEVICE_NAME, samplerate=44100, frame_size=4410, channels=1)  # 0.1 sec
 
 # Record audio
 frames = []
