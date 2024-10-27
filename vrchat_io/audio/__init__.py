@@ -1,2 +1,2 @@
-from .soundcard_audio_capture import SoundcardAudioCapture
 from .pulseaudio_application_audio_capture import PulseAudioApplicationAudioCapture
+from .soundcard_audio_capture import SoundcardAudioCapture
