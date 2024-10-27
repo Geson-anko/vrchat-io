@@ -26,7 +26,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libpulse0
+          sudo apt-get install -y pulseaudio
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
