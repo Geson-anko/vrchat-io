@@ -89,11 +89,24 @@ frame = cam.read()
 
   このInputControllerにも`Wrapper`クラスが用意されており、インターフェイスをラップすることで目的に応じて使いやすくすることができます。[DEMOファイルはこちらです。](/demos/interactive_osc_controller_demo.py)
 
+### Audio Capture
+
+```py
+cap = AudioCapture(...)
+frames = cap.read() # (frame_size, channels)
+```
+
+- SoundcardAudioCapture
+
+  `soundcard`のラッパークラスです。`read`メソッドで指定されたサイズのframe数を読み取って返します。
+
+  [DEMOファイルはこちらです。](/demos/soundcard_audio_capture_demo.py)
+
 ### Future Features
 
 (Implement below things in the future.)
 
-- [ ] Audio Capture: 統一されたAPIを定義し、VRChatの音声をキャプチャします。
+- [x] Audio Capture: 統一されたAPIを定義し、VRChatの音声をキャプチャします。
 - [ ] OSC Output
 
 ## Contributing
